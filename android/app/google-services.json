@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1051381068456",
+    "firebase_url": "https://socialtics-83dc2-default-rtdb.firebaseio.com",
+    "project_id": "socialtics-83dc2",
+    "storage_bucket": "socialtics-83dc2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051381068456:android:34cd21cdcb2d439393889d",
+        "android_client_info": {
+          "package_name": "com.example.socialtics"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH381pwx2KTB-qaB3Enx9a48lZ7r-Mvu8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
