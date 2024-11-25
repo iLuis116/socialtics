@@ -30,7 +30,7 @@ class _SearchScreenState extends State<SearchScreen> {
           decoration: InputDecoration(
             label: Text(
               "Buscar a un usuario...",
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.lightBlueAccent),
             ),
           ),
           onFieldSubmitted: (String _) {

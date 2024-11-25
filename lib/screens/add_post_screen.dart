@@ -127,6 +127,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               ),
               title: Text("Publicar a"),
               centerTitle: false,
+              foregroundColor: Colors.purpleAccent,
               actions: [
                 TextButton(
                   onPressed: () => postImage(
@@ -137,7 +138,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   child: Text(
                     "Publicar",
                     style: TextStyle(
-                        color: Colors.lightBlueAccent,
+                        color: Colors.lightGreenAccent,
                         fontWeight: FontWeight.bold,
                         fontSize: 16),
                   ),
@@ -178,6 +179,17 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         aspectRatio: 487 / 451,
                         child: Container(
                           decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 39, 144, 134),
+                                  Color.fromARGB(255, 42, 52, 69)
+                                ],
+                                stops: [
+                                  0.2,
+                                  0.5,
+                                ],
+                                begin: FractionalOffset.topLeft,
+                                end: FractionalOffset.bottomRight),
                             image: DecorationImage(
                               image: MemoryImage(_file!),
                               fit: BoxFit.fill,

@@ -46,7 +46,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: _page == 0 ? Colors.orangeAccent : Colors.white,
+              color: _page == 0 ? Colors.purpleAccent : Colors.white,
             ),
             label: '',
             backgroundColor: primaryColor,
@@ -54,7 +54,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
-              color: _page == 1 ? primaryColor : Colors.white,
+              color: _page == 1 ? Colors.lightBlueAccent : Colors.white,
             ),
             label: '',
             backgroundColor: primaryColor,
@@ -62,15 +62,15 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.add_circle,
-              color: _page == 2 ? primaryColor : Colors.white,
+              color: _page == 2 ? Colors.lightGreen : Colors.white,
             ),
             label: '',
             backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite,
-              color: _page == 3 ? primaryColor : Colors.white,
+              Icons.code_rounded,
+              color: _page == 3 ? Colors.deepOrangeAccent : Colors.white,
             ),
             label: '',
             backgroundColor: primaryColor,
@@ -78,7 +78,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: _page == 4 ? primaryColor : Colors.white,
+              color: _page == 4 ? Colors.deepPurpleAccent : Colors.white,
             ),
             label: '',
             backgroundColor: primaryColor,

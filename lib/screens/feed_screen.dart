@@ -17,7 +17,7 @@ class FeedScreen extends StatelessWidget {
           IconButton(
               onPressed: () {},
               icon: Icon(
-                Icons.messenger_outline,
+                Icons.how_to_vote_outlined,
                 color: Colors.white,
               ))
         ],

@@ -60,6 +60,21 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 39, 144, 134),
+                  Color.fromARGB(255, 42, 52, 69),
+                  Colors.blue
+                ],
+                stops: [
+                  1,
+                  0.3,
+                  1
+                ],
+                begin: FractionalOffset.topLeft,
+                end: FractionalOffset.bottomRight),
+          ),
           padding: EdgeInsets.symmetric(
             horizontal: 32,
           ),
@@ -121,9 +136,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   decoration: ShapeDecoration(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    color: Colors.blue,
+                    color: Colors.blueGrey,
                   ),
                 ),
               ),
@@ -139,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Container(
                     child: Text(
-                      '¿No tienes una cuenta? Registrate!! ',
+                      '¿No tienes una cuenta? ',
                       style: TextStyle(color: Colors.grey),
                     ),
                     padding: EdgeInsets.symmetric(
@@ -157,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: Container(
                       child: Text(
-                        'Registrarse',
+                        'Registrate!!',
                         style: TextStyle(
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,

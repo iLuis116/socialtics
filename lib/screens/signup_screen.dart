@@ -76,6 +76,21 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
         body: SafeArea(
       child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 39, 144, 134),
+                Color.fromARGB(255, 42, 52, 69),
+                Colors.blue
+              ],
+              stops: [
+                1,
+                0.3,
+                1
+              ],
+              begin: FractionalOffset.topLeft,
+              end: FractionalOffset.bottomRight),
+        ),
         padding: EdgeInsets.symmetric(
           horizontal: 32,
         ),
@@ -180,9 +195,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 decoration: ShapeDecoration(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  color: Colors.blueAccent,
+                  color: Colors.blueGrey,
                 ),
               ),
             ),

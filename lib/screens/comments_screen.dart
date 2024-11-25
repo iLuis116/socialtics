@@ -39,7 +39,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
           "Comentarios",
         ),
         centerTitle: true,
-        foregroundColor: Colors.black,
+        foregroundColor: Colors.lightGreenAccent,
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
@@ -69,6 +69,21 @@ class _CommentsScreenState extends State<CommentsScreen> {
       ),
       bottomNavigationBar: SafeArea(
         child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 39, 144, 134),
+                  Color.fromARGB(255, 42, 52, 69),
+                  Colors.blue
+                ],
+                stops: [
+                  1,
+                  0.3,
+                  1
+                ],
+                begin: FractionalOffset.topLeft,
+                end: FractionalOffset.bottomRight),
+          ),
           height: kToolbarHeight,
           margin: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -113,7 +128,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   child: Text(
                     'Publicar',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.lightGreenAccent,
                       fontSize: 15,
                     ),
                   ),

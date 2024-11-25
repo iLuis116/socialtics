@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class TextFieldInput extends StatelessWidget {
   final TextEditingController textEditingController;
@@ -22,10 +23,9 @@ class TextFieldInput extends StatelessWidget {
     return TextField(
       controller: textEditingController,
       decoration: InputDecoration(
-        fillColor: Colors.white,
+        fillColor: Colors.transparent,
         hintText: hintText,
-        hintStyle: TextStyle(color: Colors.grey),
-        border: inputBorder,
+        hintStyle: TextStyle(color: Colors.white),
         focusedBorder: inputBorder,
         enabledBorder: inputBorder,
         filled: true,
@@ -35,7 +35,7 @@ class TextFieldInput extends StatelessWidget {
       cursorErrorColor: Colors.red,
       keyboardType: textInputType,
       obscureText: isPass,
-      style: TextStyle(color: Colors.black),
+      style: TextStyle(color: Colors.white),
     );
   }
 }

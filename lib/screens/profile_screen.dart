@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:instoo/resources/auth_methods.dart';
 import 'package:instoo/resources/firestore_methods.dart';
 import 'package:instoo/screens/login_screen.dart';
 import 'package:instoo/utils/colors.dart';
@@ -11,6 +10,7 @@ import '../widgets/follow_button.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
+
   const ProfileScreen({Key? key, required this.uid}) : super(key: key);
 
   @override
@@ -64,6 +64,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
+  void cerrarsesion() {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return isLoading
@@ -78,7 +82,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
               backgroundColor: Color.fromARGB(255, 42, 52, 69),
               title: Text(userData['username']),
               centerTitle: false,
-              foregroundColor: Colors.white,
+              foregroundColor: Colors.lightBlueAccent,
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      cerrarsesion();
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()));
+                    },
+                    icon: Icon(
+                      Icons.logout_rounded,
+                      color: Colors.white,
+                    ))
+              ],
             ),
             body: ListView(
               children: [
@@ -115,18 +133,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     FirebaseAuth.instance.currentUser!.uid ==
                                             widget.uid
                                         ? FollowButton(
-                                            buttonLabel: "Cerrar Sesión",
-                                            backGroundColor: Colors.white,
+                                            buttonLabel: "",
+                                            backGroundColor: Colors.transparent,
                                             textColor: primaryColor,
-                                            borderColor: Colors.black,
-                                            function: () async {
-                                              await AuthMethods().signoutUser();
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          LoginScreen()));
-                                            },
+                                            borderColor: Colors.transparent,
                                           )
                                         : isFollowing
                                             ? FollowButton(
@@ -149,7 +159,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                 },
                                               )
                                             : FollowButton(
-                                                buttonLabel: "Follow",
+                                                buttonLabel: "Seguir",
                                                 backGroundColor: Colors.blue,
                                                 textColor: Colors.white,
                                                 borderColor: Colors.blue,
@@ -181,7 +191,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Text(
                           userData['username'],
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, color: Colors.black),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.lightBlueAccent),
                         ),
                       ),
                       Container(
@@ -191,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         child: Text(
                           userData['bio'],
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ],
@@ -243,7 +254,9 @@ Column buildStatsColumn(int num, String label) {
       Text(
         num.toString(),
         style: TextStyle(
-            fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.lightGreenAccent),
       ),
       Container(
         margin: EdgeInsets.only(top: 4),
@@ -252,7 +265,7 @@ Column buildStatsColumn(int num, String label) {
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w400,
-            color: Colors.black,
+            color: Colors.yellowAccent,
           ),
         ),
       ),
