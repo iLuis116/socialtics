@@ -21,7 +21,7 @@ jobs:
         run: |
           flutter pub upgrade --major-versions
           flutter pub get
-          flutter build web --release
+          flutter build web --web-renderer html
           
       - name: Firebase Deploy
         run: |
