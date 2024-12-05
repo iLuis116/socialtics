@@ -1,0 +1,29 @@
+
+name: Despliegue de Sistema
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+
+      - name: Build Flutter Web
+        run: |
+          flutter pub upgrade --major-versions
+          flutter pub get
+          flutter build web --web-renderer html
+          
+      - name: Firebase Deploy
+        run: |
+          sudo npm install -g firebase-tools
+          firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
