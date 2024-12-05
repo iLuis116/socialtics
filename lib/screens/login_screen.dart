@@ -48,144 +48,117 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       );
     } else {
-      showSnackBar(
-        result,
-        context,
-      );
+      showSnackBar(result, context);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context)
+                .size
+                .height, // Asegura que el gradiente cubra toda la pantalla
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
                 colors: [
                   Color.fromARGB(255, 39, 144, 134),
                   Color.fromARGB(255, 42, 52, 69),
-                  Colors.blue
+                  Colors.blue,
                 ],
-                stops: [
-                  1,
-                  0.3,
-                  1
-                ],
-                begin: FractionalOffset.topLeft,
-                end: FractionalOffset.bottomRight),
-          ),
-          padding: EdgeInsets.symmetric(
-            horizontal: 32,
-          ),
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Flexible(
-                flex: 2,
-                child: Container(),
+                stops: [0.0, 0.5, 1.0], // Controla la posición de los colores
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
-              Hero(
-                tag: 1,
-                child: Image.asset(
-                  'assets/Logo.gif',
-                  height: 250,
-                  fit: BoxFit.fill,
-                ),
-              ),
-              SizedBox(
-                height: 64,
-              ),
-              TextFieldInput(
-                textEditingController: _emailController,
-                hintText: "Ingresa tu Correo",
-                textInputType: TextInputType.emailAddress,
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              TextFieldInput(
-                textEditingController: _passwordController,
-                hintText: "Ingresa tu Contraseña",
-                textInputType: TextInputType.text,
-                isPass: true,
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              InkWell(
-                onTap: loginUser,
-                child: Container(
-                  child: _isLoading
-                      ? Center(
-                          child: CircularProgressIndicator(
-                            color: textPrimaryColor,
-                          ),
-                        )
-                      : Text(
-                          'Iniciar Sesión',
-                          style: TextStyle(
-                              color: textPrimaryColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(
-                    vertical: 12,
+            ),
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth > 600 ? screenWidth * 0.2 : 32,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 50),
+                Hero(
+                  tag: 1,
+                  child: Image.asset(
+                    'assets/Logo.gif',
+                    height: screenWidth > 600 ? 300 : 250,
+                    fit: BoxFit.fill,
                   ),
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                ),
+                const SizedBox(height: 32),
+                TextFieldInput(
+                  textEditingController: _emailController,
+                  hintText: "Ingresa tu Correo",
+                  textInputType: TextInputType.emailAddress,
+                ),
+                const SizedBox(height: 24),
+                TextFieldInput(
+                  textEditingController: _passwordController,
+                  hintText: "Ingresa tu Contraseña",
+                  textInputType: TextInputType.text,
+                  isPass: true,
+                ),
+                const SizedBox(height: 24),
+                InkWell(
+                  onTap: loginUser,
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    decoration: ShapeDecoration(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      color: Colors.blueGrey,
                     ),
-                    color: Colors.blueGrey,
+                    child: _isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : const Text(
+                            'Iniciar Sesión',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              Flexible(
-                flex: 2,
-                child: Container(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: Text(
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
                       '¿No tienes una cuenta? ',
                       style: TextStyle(color: Colors.grey),
                     ),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 8,
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignupScreen(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      child: Text(
-                        'Registrate!!',
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignupScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Regístrate!',
                         style: TextStyle(
                           color: Colors.grey,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      padding: EdgeInsets.symmetric(
-                        vertical: 8,
-                      ),
                     ),
-                  )
-                ],
-              )
-            ],
+                  ],
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
           ),
         ),
       ),

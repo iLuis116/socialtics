@@ -5,7 +5,6 @@ import 'package:instoo/resources/firestore_methods.dart';
 import 'package:instoo/screens/login_screen.dart';
 import 'package:instoo/utils/colors.dart';
 import 'package:instoo/utils/utils.dart';
-
 import '../widgets/follow_button.dart';
 
 class ProfileScreen extends StatefulWidget {

@@ -73,7 +73,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
       appBar: AppBar(
         title: Text('Cursos de Programación'),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 42, 52, 69),
+        backgroundColor: Colors.transparent,
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
